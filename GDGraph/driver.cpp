@@ -17,6 +17,17 @@ void INIT() {
 
 //ADDV – Request a string, then add that string as a vertex.
 void ADDV() {
+	string v;
+
+	cout << "ADDING A NEW VERTEX :: " << endl << endl;
+
+	cout << "PLEASE ENTER THE NAME OF THE NEW VERTEX: ";
+	cin >> v;
+
+	addVertex(v);
+
+
+	cout << endl << endl << "NEW EDGE SUCCESSFULLY ADDED" << endl << endl;
 
 }
 
@@ -29,18 +40,20 @@ void ADDE() {
 	int cost;
 
 	cout << "ADDING A NEW EDGE :: " << endl << endl;
-	cout << "PLEASE ENTER THE NAME OF THE FIRST VERTEX: ";
-	cin >> v1;
+
+	cout << "PLEASE ENTER THE NAME OF THE FIRST VERTEX: "; 
+	cin >> v1; 
+
 	cout << endl << "PLEASE ENTER THE NAME OF THE SECOND VERTEX : ";
 	cin >> v2;
 
 	cout << endl << "PLEASE ENTER THE COST OF THIS EDGE: ";
 	cin >> cost;
 
+
 	if (addEdge(v1, v2, cost)) {
 		cout << endl << endl << "NEW EDGE SUCCESSFULLY ADDED" << endl << endl;
 	}
-
 	else
 	{
 		cout << endl << endl << "ERROR: PLEASE CHECK THE NAMES OF THE VERTICES" << endl << endl;
