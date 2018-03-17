@@ -5,15 +5,18 @@
 vector<string> vertices = vector<string>();
 vector<vector<int>> edges = vector<vector<int>>();
 
-//void makeEmpty() – Initializes the graph to an empty state.
+
+//initializes the graph to an empty state.
 void makeEmpty() {
 	vertices.clear();
 	edges.clear();
 }
 
 
-//void addVertex(string vertexname) – Add a vertex to the graph.
+//add vertex
 void addVertex(string vertexname) {
+	vertices.push_back(vertexname);
+	edges.push_back(vector<int>()); //add appropriate column/row for new vertex in the adj matrix
 }
 
 
