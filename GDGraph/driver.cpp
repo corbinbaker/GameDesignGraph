@@ -1,10 +1,17 @@
 #include "graph.h"
+#include <iostream>
+#include <string>
 using namespace std;
 
 
+//vector<string> vertices;
+//vector<vector<int>> edges; //ADJ MATRIX
+
 //INIT – Reset the graph
 void INIT() {
+	cout << "RESETTING GRAPH..." << endl << endl;
 	makeEmpty();
+	cout << "GRAPH SUCCESSFULLY RESET" << endl << endl;
 }
 
 
@@ -17,6 +24,27 @@ void ADDV() {
 //ADDE – Request the name of two vertices, then a weight between the vertices.Creates an edge based on this info.
 void ADDE() {
 
+	string v1;
+	string v2;
+	int cost;
+
+	cout << "ADDING A NEW EDGE :: " << endl << endl;
+	cout << "PLEASE ENTER THE NAME OF THE FIRST VERTEX: ";
+	cin >> v1;
+	cout << endl << "PLEASE ENTER THE NAME OF THE SECOND VERTEX : ";
+	cin >> v2;
+
+	cout << endl << "PLEASE ENTER THE COST OF THIS EDGE: ";
+	cin >> cost;
+
+	if (addEdge(v1, v2, cost)) {
+		cout << endl << endl << "NEW EDGE SUCCESSFULLY ADDED" << endl << endl;
+	}
+
+	else
+	{
+		cout << endl << endl << "ERROR: PLEASE CHECK THE NAMES OF THE VERTICES" << endl << endl;
+	}
 }
 
 
@@ -24,7 +52,7 @@ void ADDE() {
 //The output might look like…
 //Atlanta; Adjacent: Houston (800), Washington (600)
 void PRINT() {
-
+	
 }
 
 
@@ -42,5 +70,6 @@ void TEST2() {
 
 //QUIT – Quit the test program.
 void QUIT() {
+	cout << "EXITTING APPLICATION..." << endl << endl;
 	exit(0);
 }
