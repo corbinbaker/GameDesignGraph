@@ -1,9 +1,10 @@
-#include "driver.h"
 #include "graph.h"
+using namespace std;
+
 
 //INIT – Reset the graph
 void INIT() {
-
+	makeEmpty();
 }
 
 
@@ -41,5 +42,5 @@ void TEST2() {
 
 //QUIT – Quit the test program.
 void QUIT() {
-
+	exit(0);
 }

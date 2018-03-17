@@ -1,5 +1,5 @@
 #include "graph.h"
-
+#include <vector>
 
 //GRAPH - strings for the vertices and ints for the weights
 vector<string> vertices = vector<string>();
