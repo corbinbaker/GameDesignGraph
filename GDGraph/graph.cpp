@@ -23,7 +23,31 @@ void addVertex(string vertexname) {
 //bool addEdge(string fromVertex, string toVertex, int cost) - Adds an edge from fromVertex to toVertex with a weight of cost.  Returns false if either vertex not found.
 bool addEdge(string fromVertex, string toVertex, int cost) {
 	
-	
+	int fV, tV = -1;
+
+	for (int i = 0; i < vertices.size(); i++) //obtain index of vertices
+	{
+		if (vertices[i] == fromVertex) {
+			fV = i;
+		}
+
+		else if (vertices[i] == toVertex) {
+			tV = i;
+		}
+	}
+
+
+	if (fV == -1 || tV == -1)
+	{
+		return false;
+	}
+
+	else
+	{
+		edges[fV][tV] = cost;
+		edges[tV][fV] = cost;
+		return true;
+	}
 }
 
 
