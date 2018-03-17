@@ -1,12 +1,11 @@
 #pragma once
 #include <queue>
+#include <vector>
 using namespace std;
 
 
-//vector<string> vertices;
+//vector<string> vertices; 
 //vector<vector<int>> edges; //ADJ MATRIX
-
-
 
 //void makeEmpty() – Initializes the graph to an empty state.
 void makeEmpty();
@@ -26,5 +25,9 @@ int getWeight(string fromVertex, string toVertex);
 
 //bool getAdjacent( string fromVertex, queue vertexQue) – given the vertex fromVertex, return a queue containing the adjacent vertices.  Returns false if vertex not found.
 bool getAdjacent(string fromVertex, queue<string> vertexQue);
+
+//getters
+vector<string> getVertices();
+vector<vector<int>> getEdges();
 
 

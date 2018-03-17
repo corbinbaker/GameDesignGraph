@@ -1,7 +1,5 @@
-﻿  driver.cpp
-  Generating Code...
-  Compiling...
-  main.cpp
+﻿  graph.cpp
+  driver.cpp
   Generating Code...
   GDGraph.vcxproj -> Z:\adit\Desktop\gamedesign\GameDesignGraph\GDesignGraph\GDGraph\Debug\GDGraph.exe
   GDGraph.vcxproj -> Z:\adit\Desktop\gamedesign\GameDesignGraph\GDesignGraph\GDGraph\Debug\GDGraph.pdb (Partial PDB)

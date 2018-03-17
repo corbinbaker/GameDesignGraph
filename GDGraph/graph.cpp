@@ -5,7 +5,6 @@
 vector<string> vertices = vector<string>();
 vector<vector<int>> edges = vector<vector<int>>();
 
-
 //initializes the graph to an empty state.
 void makeEmpty() {
 	vertices.clear();
@@ -106,4 +105,15 @@ bool getAdjacent(string fromVertex, queue<string> vertexQue) {
 
 		return true;
 	}
+}
+
+
+vector<string> getVertices()
+{
+	return vertices;
+}
+
+vector<vector<int>> getEdges()
+{
+	return edges;
 }

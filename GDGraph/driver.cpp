@@ -65,7 +65,22 @@ void ADDE() {
 //The output might look like…
 //Atlanta; Adjacent: Houston (800), Washington (600)
 void PRINT() {
+	cout << "PRINTING ALL VERTICES AND EDGES :: " << endl << endl;
 	
+	vector<string> v = getVertices();
+	vector<vector<int>> e = getEdges();
+
+	for (unsigned int i = 0; i < v.size(); i++)
+	{
+		cout << v[i] << ": " << endl;
+		
+		for (unsigned int j = 0; j < v.size(); j++)
+		{
+			if (e[i][j] > -1) {
+				cout << "\t" << v[j] << " [" << e[i][j] << "]" << endl;
+			}
+		}
+	}
 }
 
 
