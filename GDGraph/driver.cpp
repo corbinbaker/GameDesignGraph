@@ -86,6 +86,7 @@ void PRINT() {
 
 //TEST1 – Initializes the graph.Then insert the vertices and edges defined for the example on slide 6 in lecture 24 (Game Map and Graphs).
 void TEST1() {
+	cout << "RUNNING TEST 1..." << endl << endl;
 
 	//add vertexes
 	addVertex("Dallas");
@@ -97,16 +98,43 @@ void TEST1() {
 	addVertex("Houston");
 
 	//add edges
-	
 
+
+	//Dallas Edges
+	addEdge("Dallas", "Austin", 200);
+	addEdge("Dallas", "Chicago", 900);
+	addEdge("Dallas", "Denver", 780);
+
+	//Austin Edges
+	addEdge("Austin", "Houston", 160);
+	addEdge("Austin", "Dallas", 200);
+
+	//Washington Edges
+	addEdge("Washington", "Atlanta", 600);
+	addEdge("Washington", "Dallas", 1300);
+
+	//Denver Edges
+	addEdge("Denver", "Atlanta", 1400);
+	addEdge("Denver", "Chicago", 1000);
+
+	//Chicago Edges
+	addEdge("Chicago", "Denver", 1000);
+
+	//Houston Edges
+	addEdge("Houston", "Atlanta", 800);
+
+	//Atlanta Edges
+	addEdge("Atlanta", "Washington", 600);
+	addEdge("Atlanta", "Houston", 800);
+
+	cout << "TEST 1 COMPLETE" << endl << endl;
 }
 
 
 //TEST2 (Bonus Points) - Initializes the graph. Then insert the vertices and edges defined for the example on slide 3 (Movealot) in lecture 24.
 void TEST2() {
 
-	//add vertexes
-	//add edges
+	cout << "TEST 2 HAS NOT BEEN IMPLEMENTED" << endl << endl;
 
 }
 
