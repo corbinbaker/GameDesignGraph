@@ -87,11 +87,26 @@ void PRINT() {
 //TEST1 – Initializes the graph.Then insert the vertices and edges defined for the example on slide 6 in lecture 24 (Game Map and Graphs).
 void TEST1() {
 
+	//add vertexes
+	addVertex("Dallas");
+	addVertex("Austin");
+	addVertex("Washington");
+	addVertex("Denver");
+	addVertex("Atlanta");
+	addVertex("Chicago");
+	addVertex("Houston");
+
+	//add edges
+	
+
 }
 
 
 //TEST2 (Bonus Points) - Initializes the graph. Then insert the vertices and edges defined for the example on slide 3 (Movealot) in lecture 24.
 void TEST2() {
+
+	//add vertexes
+	//add edges
 
 }
 

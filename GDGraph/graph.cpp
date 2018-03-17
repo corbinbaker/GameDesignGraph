@@ -44,7 +44,6 @@ bool addEdge(string fromVertex, string toVertex, int cost) {
 	else
 	{
 		edges[fV][tV] = cost;
-		edges[tV][fV] = cost;
 		return true;
 	}
 }
