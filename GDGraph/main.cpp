@@ -4,6 +4,8 @@
 
 
 #include "driver.h"
+#include <iostream>
+#include <string>
 using namespace std;
 
 
@@ -16,5 +18,56 @@ identify the expected results for a test plan, then execute the test plan and in
 
 int main(int argc, char *argv[])
 {
+	string input;
+
+	while (true)
+	{
+		cout << "PLEASE ENTER ONE OF THE FOLLOWING COMMANDS :: " << endl;
+		cout << "INIT / ADDV / ADDE / PRINT / TEST1 / TEST2 / QUIT" << endl << endl;
+		cin >> input;
+
+		if (input == "INIT")
+		{
+			system("CLS");
+			INIT();
+		}
+
+		else if (input == "ADDV")
+		{
+			system("CLS");
+			ADDV();
+		}
+
+		else if (input == "ADDE")
+		{
+			system("CLS");
+			ADDE();
+		}
+
+		else if (input == "PRINT")
+		{
+			system("CLS");
+			PRINT();
+		}
+
+		else if (input == "TEST1")
+		{
+			system("CLS");
+			TEST1();
+		}
+
+		else if (input == "TEST2")
+		{
+			system("CLS");
+			TEST2();
+		}
+
+		else if (input == "QUIT")
+		{
+			system("CLS");
+			QUIT();
+		}
+			
+	}
 
 }

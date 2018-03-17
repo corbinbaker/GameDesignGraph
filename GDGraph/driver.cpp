@@ -27,7 +27,7 @@ void ADDV() {
 	addVertex(v);
 
 
-	cout << endl << endl << "NEW EDGE SUCCESSFULLY ADDED" << endl << endl;
+	cout << endl << endl << "NEW VERTEX SUCCESSFULLY ADDED" << endl << endl;
 
 }
 
@@ -66,6 +66,7 @@ void ADDE() {
 //Atlanta; Adjacent: Houston (800), Washington (600)
 void PRINT() {
 	cout << "PRINTING ALL VERTICES AND EDGES :: " << endl << endl;
+
 	
 	vector<string> v = getVertices();
 	vector<vector<int>> e = getEdges();
@@ -80,6 +81,8 @@ void PRINT() {
 				cout << "\t" << v[j] << " [" << e[i][j] << "]" << endl;
 			}
 		}
+
+		cout << endl << endl;
 	}
 }
 
@@ -126,6 +129,8 @@ void TEST1() {
 	//Atlanta Edges
 	addEdge("Atlanta", "Washington", 600);
 	addEdge("Atlanta", "Houston", 800);
+
+	//13 TOTAL EDGES
 
 	cout << "TEST 1 COMPLETE" << endl << endl;
 }

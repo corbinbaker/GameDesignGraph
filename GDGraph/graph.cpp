@@ -15,7 +15,29 @@ void makeEmpty() {
 //add vertex
 void addVertex(string vertexname) {
 	vertices.push_back(vertexname);
-	edges.push_back(vector<int>()); //add appropriate column/row for new vertex in the adj matrix
+	
+
+	vector<int> v = vector<int>(); //add new row for new vertex
+
+	if (edges.empty())
+	{
+	}
+	else
+	{
+		for (unsigned int i = 0; i < edges.size(); i++) //initialize edge values with -1
+		{
+			edges[i].push_back(-1);
+		}
+	}
+
+	for (unsigned int i = 0; i < vertices.size(); i++) //initialize edge values with -1
+	{
+		v.push_back(-1);
+	}
+
+	
+
+	edges.push_back(v); //add appropriate column/row for new vertex in the adj matrix
 }
 
 
