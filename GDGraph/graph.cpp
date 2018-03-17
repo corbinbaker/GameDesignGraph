@@ -25,7 +25,7 @@ bool addEdge(string fromVertex, string toVertex, int cost) {
 	
 	int fV, tV = -1;
 
-	for (int i = 0; i < vertices.size(); i++) //obtain index of vertices
+	for (unsigned int i = 0; i < vertices.size(); i++) //obtain index of vertices
 	{
 		if (vertices[i] == fromVertex) {
 			fV = i;
@@ -53,11 +53,57 @@ bool addEdge(string fromVertex, string toVertex, int cost) {
 
 //int getWeight( string fromVertex, string toVertex ) – Returns the cost to move from fromVertex to adjacent vertex toVertex. If the two vertices are not adjacent or not found, returns -1.
 int getWeight(string fromVertex, string toVertex) {
-	
+
+	int fV, tV = -1;
+
+	for (unsigned int i = 0; i < vertices.size(); i++) //obtain index of vertices
+	{
+		if (vertices[i] == fromVertex) {
+			fV = i;
+		}
+
+		else if (vertices[i] == toVertex) {
+			tV = i;
+		}
+	}
+
+
+	if (fV == -1 || tV == -1)
+	{
+		return -1;
+	}
+
+	else
+	{
+		return edges[fV][tV];
+	}
 }
 
 
 //bool getAdjacent( string fromVertex, queue vertexQue) – given the vertex fromVertex, return a queue containing the adjacent vertices.  Returns false if vertex not found.
 bool getAdjacent(string fromVertex, queue<string> vertexQue) {
+	int fV = -1;
 
+	for (unsigned int i = 0; i < vertices.size(); i++) //obtain index of vertices
+	{
+		if (vertices[i] == fromVertex) {
+			fV = i;
+		}
+	}
+
+	if (fV == -1)
+	{
+		return false;
+	}
+	else
+	{
+		vector<int> v = edges[fV];
+
+		for (int i : v)
+		{
+			vertexQue.emplace(vertices[i]);
+		}
+
+		return true;
+	}
 }
