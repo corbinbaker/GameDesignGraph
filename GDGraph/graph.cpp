@@ -172,6 +172,8 @@ int dijkstra(string startVertex, string endVertex, queue<string> vertexQue) {
 		
 	}
 
+	//generate vertexQue
+
 	return d;	
 }
 
