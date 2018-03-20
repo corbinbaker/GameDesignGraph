@@ -1,5 +1,7 @@
 #include "graph.h"
 #include <vector>
+#include <tuple>
+#include <string>
 
 //GRAPH - strings for the vertices and ints for the weights
 vector<string> vertices = vector<string>();
@@ -144,25 +146,43 @@ vector<vector<int>> getEdges()
 //Djikstra algorithm used to determine the most efficient path from one node to another,
 //returning the distance between the two vertices or -1 if none found, vertexQue is the path taken
 int dijkstra(string startVertex, string endVertex, queue<string> vertexQue) {
-	priority_queue<string, int, string> q = priority_queue<string, int, string>();
+	priority_queue<dNode, vector<dNode>, CompareDist> q;
 	int d = 0;
 	string sV = startVertex;
 	string eV = endVertex;
+	q.emplace(new dNode(sV, 0, sV));
 
 	//check if startVertex == endVertex
 	while (sV != eV)
 	{
 		//if queue empty return -1
+		if (q.empty()) {
+			return -1;
+		}
 
-		//evaluate the paths from the starting node, ignoring any node that has already been a starting node
+		else
+		{
+			//evaluate the paths from the starting node, ignoring any node that has already been a starting node
 
-		//modify node queue to accomodate new SHORTER paths, placing the shortest path on top
+			//modify node queue to accomodate new SHORTER paths, placing the shortest path on top
 
-		//pop the queue and loop
+			//pop the queue and loop
+
+		}
+		
 	}
-	
 
-	return d;
-
-	
+	return d;	
 }
+
+
+//tuple definition "dNode" used for clarity
+typedef tuple<string, int, string> dNode;
+
+//priority queue comparison method
+class CompareDist{
+	bool operator() (dNode n1, dNode n2)
+	{
+		return std::get<1>(n1) < std::get<1>(n2);
+	}
+};
