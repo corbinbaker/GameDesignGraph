@@ -141,7 +141,28 @@ vector<vector<int>> getEdges()
 }
 
 
-//Djikstra algorithm used to determine the most efficient path from one node to another (-1 if none found)
+//Djikstra algorithm used to determine the most efficient path from one node to another,
+//returning the distance between the two vertices or -1 if none found, vertexQue is the path taken
 int dijkstra(string startVertex, string endVertex, queue<string> vertexQue) {
+	priority_queue<string, int, string> q = priority_queue<string, int, string>();
+	int d = 0;
+	string sV = startVertex;
+	string eV = endVertex;
 
+	//check if startVertex == endVertex
+	while (sV != eV)
+	{
+		//if queue empty return -1
+
+		//evaluate the paths from the starting node, ignoring any node that has already been a starting node
+
+		//modify node queue to accomodate new SHORTER paths, placing the shortest path on top
+
+		//pop the queue and loop
+	}
+	
+
+	return d;
+
+	
 }
