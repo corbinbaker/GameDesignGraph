@@ -31,3 +31,5 @@ vector<string> getVertices();
 vector<vector<int>> getEdges();
 
 
+//Djikstra algorithm used to determine the most efficient path from one node to another (-1 if none found)
+int dijkstra(string startVertex, string endVertex, queue<string> vertexQue);

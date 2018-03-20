@@ -129,6 +129,7 @@ bool getAdjacent(string fromVertex, queue<string> vertexQue) {
 }
 
 
+//GETTERS
 vector<string> getVertices()
 {
 	return vertices;
@@ -137,4 +138,10 @@ vector<string> getVertices()
 vector<vector<int>> getEdges()
 {
 	return edges;
+}
+
+
+//Djikstra algorithm used to determine the most efficient path from one node to another (-1 if none found)
+int dijkstra(string startVertex, string endVertex, queue<string> vertexQue) {
+
 }
