@@ -113,21 +113,23 @@ bool getAdjacent(string fromVertex, vector<string> vertexQue) {
 		}
 	}
 
-	if (fV == -1)
+	if (fV == -1) //cant find from vertex
 	{
 		return false;
 	}
 	else
 	{
+		
 		vector<int> v = edges[fV];
-
 		for (int i : v)
 		{
-			vertexQue.push_back(vertices[i]);
+			vertexQue.push_back(vertices[i]); //error here
 		}
 
 		return true;
 	}
+
+	
 }
 
 
