@@ -121,9 +121,13 @@ bool getAdjacent(string fromVertex, vector<string> vertexQue) {
 	{
 		
 		vector<int> v = edges[fV];
-		for (int i : v)
+		for (int i = 0; i < vertices.size(); i++)
 		{
-			vertexQue.push_back(vertices[i]); //error here
+			
+			if (v[i] >= 0)
+			{
+				vertexQue.push_back(vertices[i]);
+			}
 		}
 
 		return true;
