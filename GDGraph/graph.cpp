@@ -1,6 +1,7 @@
 #include "graph.h"
 #include <vector>
 #include <string>
+#include <iostream>
 
 //GRAPH - strings for the vertices and ints for the weights
 vector<string> vertices = vector<string>();
@@ -104,7 +105,7 @@ int getWeight(string fromVertex, string toVertex) {
 //bool getAdjacent( string fromVertex, queue vertexQue) – given the vertex fromVertex, return a queue containing the adjacent vertices.  Returns false if vertex not found.
 bool getAdjacent(string fromVertex, vector<string> vertexQue) {
 	int fV = -1;
-
+	
 	for (unsigned int i = 0; i < vertices.size(); i++) //obtain index of vertices
 	{
 		if (vertices[i] == fromVertex) {
@@ -200,41 +201,46 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, stri
 
 	//generate DNodes and vertexQue
 	vector<string> adjVertices;
-	getAdjacent(startVertex, adjVertices);
-	for (string s : adjVertices)
+	bool hasAdj;
+
+	hasAdj = getAdjacent(startVertex, adjVertices);
+	if (hasAdj)
 	{
-		//check for duplicates
-		bool pres = false;
-		for (DNode d : vertexQue)
+		for (string s : adjVertices)
 		{
-			if (d.name == s)
+			//check for duplicates
+			bool pres = false;
+			for (DNode d : vertexQue)
 			{
-				pres = true; //duplicate found
-				if (!d.visited)
+				if (d.name == s)
 				{
-					//if more efficient path found, use this path
-					int cTemp = getWeight(startVertex, d.name);
-					if (d.cost > cTemp)
+					pres = true; //duplicate found
+					if (!d.visited)
 					{
-						d.cost = cTemp;
-						d.from = startVertex;
+						//if more efficient path found, use this path
+						int cTemp = getWeight(startVertex, d.name);
+						if (d.cost > cTemp)
+						{
+							d.cost = cTemp;
+							d.from = startVertex;
+						}
 					}
 				}
 			}
-		}
 
 
-		//new node found
-		if (!pres)
-		{
-			DNode d;
-			d.name = s;
-			d.from = startVertex;
-			d.visited = false;
-			d.cost = getWeight(startVertex, d.name);
-			vertexQue.push_back(d);
+			//new node found
+			if (!pres)
+			{
+				DNode d;
+				d.name = s;
+				d.from = startVertex;
+				d.visited = false;
+				d.cost = getWeight(startVertex, d.name);
+				vertexQue.push_back(d);
+			}
+
 		}
-		
 	}
 
 
