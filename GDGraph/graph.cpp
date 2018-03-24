@@ -282,12 +282,13 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue) {
 	{
 		//recursive step
 		vertexQue[next].visited = true;
-
+		cost += cheapestCost;
 		cost += dijkstra(vertexQue[next].name, endVertex, vertexQue);
 	}
 
-	return cost;
+	cout << cost << endl;
 
+	return cost;
 }
 
 
