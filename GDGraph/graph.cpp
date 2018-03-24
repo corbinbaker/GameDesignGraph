@@ -103,9 +103,9 @@ int getWeight(string fromVertex, string toVertex) {
 
 
 //bool getAdjacent( string fromVertex, queue vertexQue) – given the vertex fromVertex, return a queue containing the adjacent vertices.  Returns false if vertex not found.
-bool getAdjacent(string fromVertex, vector<string> vertexQue) {
+vector<string> getAdjacent(string fromVertex) {
 	int fV = -1;
-	
+	vector<string> vAdj;
 	for (unsigned int i = 0; i < vertices.size(); i++) //obtain index of vertices
 	{
 		if (vertices[i] == fromVertex) {
@@ -113,27 +113,25 @@ bool getAdjacent(string fromVertex, vector<string> vertexQue) {
 		}
 	}
 
-	if (fV == -1) //cant find from vertex
-	{
-		return false;
-	}
-	else
+	if(fV != -1)
 	{
 		
 		vector<int> v = edges[fV];
-		for (int i = 0; i < vertices.size(); i++)
+		for (unsigned int i = 0; i < vertices.size(); i++)
 		{
 			
 			if (v[i] >= 0)
 			{
-				vertexQue.push_back(vertices[i]);
+				vAdj.push_back(vertices[i]);
+				cout << "TEST" << endl;
 			}
 		}
 
-		return true;
+		return vAdj;
 	}
 
 	
+	return vAdj;	
 }
 
 
@@ -208,46 +206,45 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, stri
 	vector<string> adjVertices;
 	bool hasAdj;
 
-	hasAdj = getAdjacent(startVertex, adjVertices);
-	if (hasAdj)
+	adjVertices = getAdjacent(startVertex);
+	
+	for (string s : adjVertices)
 	{
-		for (string s : adjVertices)
-		{
 			
-			//check for duplicates
-			bool pres = false;
-			for (DNode d : vertexQue)
-			{
+		//check for duplicates
+		bool pres = false;
+		for (DNode d : vertexQue)
+		{
 				
-				if (d.name == s)
+			if (d.name == s)
+			{
+				pres = true; //duplicate found
+				if (!d.visited)
 				{
-					pres = true; //duplicate found
-					if (!d.visited)
+					//if more efficient path found, use this path
+					int cTemp = getWeight(startVertex, d.name);
+					if (d.cost > cTemp)
 					{
-						//if more efficient path found, use this path
-						int cTemp = getWeight(startVertex, d.name);
-						if (d.cost > cTemp)
-						{
-							d.cost = cTemp;
-							d.from = startVertex;
-						}
+						d.cost = cTemp;
+						d.from = startVertex;
 					}
 				}
 			}
+		}
 
 
-			//new node found
-			if (!pres)
-			{	
-				DNode d;
-				d.name = s;
-				d.from = startVertex;
-				d.visited = false;
-				d.cost = getWeight(startVertex, d.name);
-				vertexQue.push_back(d);
-			}
+		//new node found
+		if (!pres)
+		{	
+			DNode d;
+			d.name = s;
+			d.from = startVertex;
+			d.visited = false;
+			d.cost = getWeight(startVertex, d.name);
+			vertexQue.push_back(d);
 		}
 	}
+	
 
 
 

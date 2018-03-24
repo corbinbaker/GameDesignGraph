@@ -24,7 +24,7 @@ int getWeight(string fromVertex, string toVertex);
 
 
 //bool getAdjacent( string fromVertex, queue vertexQue) – given the vertex fromVertex, return a queue containing the adjacent vertices.  Returns false if vertex not found.
-bool getAdjacent(string fromVertex, vector<string> vertexQue);
+vector<string> getAdjacent(string fromVertex);
 
 //getters
 vector<string> getVertices();
