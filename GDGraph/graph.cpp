@@ -103,7 +103,7 @@ int getWeight(string fromVertex, string toVertex) {
 
 
 //bool getAdjacent( string fromVertex, queue vertexQue) – given the vertex fromVertex, return a queue containing the adjacent vertices.  Returns false if vertex not found.
-bool getAdjacent(string fromVertex, queue<string> vertexQue) {
+bool getAdjacent(string fromVertex, vector<string> vertexQue) {
 	int fV = -1;
 
 	for (unsigned int i = 0; i < vertices.size(); i++) //obtain index of vertices
@@ -145,13 +145,58 @@ vector<vector<int>> getEdges()
 
 //Djikstra algorithm used to determine the most efficient path from one node to another,
 //returning the distance between the two vertices or -1 if none found, vertexQue is the path taken
-int dijkstra(string startVertex, string endVertex, queue<dNode> vertexQue) {
+bool found = false;
+int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue) {
+
+	if (startVertex == endVertex)
+	{
+		return 0;
+	}
+
+	vector<string> adjVertices;
+	getAdjacent(startVertex, adjVertices);
+
+	for (string s : adjVertices)
+	{
+		for (DNode d : vertexQue)
+		{
+		
+		}
+	}
+
+
+
+	
+	int cheapestCost = INT_MAX;
+	int next = -1;
+
+	for (int i = 0; i < vertexQue.size(); i++)
+	{
+		if (!vertexQue[i].visited)
+		{
+			if (vertexQue[i].cost < cheapestCost)
+			{
+				next = i;
+				cheapestCost = vertexQue[i].cost;
+			}
+		}
+	}
+
+	if (next == -1)
+	{
+		return -1000;
+	}
+	else
+	{
+		vertexQue[next].visited;
+		return dijkstra(vertexQue[next].name, endVertex, vertexQue);
+	}
 
 }
 
 
 //struct definition "dNode" used to store vertex info
-struct dNode {
+struct DNode {
 
 	string name;
 	int cost;
