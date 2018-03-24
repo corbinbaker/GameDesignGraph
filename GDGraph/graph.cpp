@@ -6,6 +6,7 @@
 //GRAPH - strings for the vertices and ints for the weights
 vector<string> vertices = vector<string>();
 vector<vector<int>> edges = vector<vector<int>>();
+string output = "";
 
 //initializes the graph to an empty state.
 void makeEmpty() {
@@ -145,6 +146,11 @@ vector<vector<int>> getEdges()
 	return edges;
 }
 
+string getOutput()
+{
+	return output;
+}
+
 
 
 
@@ -159,10 +165,9 @@ string path(string startVertex, string endVertex, vector<DNode> vertexQue)
 	vector<string> p;
 	p.push_back(endVertex);
 
-	do //atleast once
+	while (current != startVertex); //loop until start Vertex = current
 	{
 
-		cout << "TEST" << endl;
 		//find current in vertexQue
 		for (DNode d : vertexQue)
 		{
@@ -173,14 +178,14 @@ string path(string startVertex, string endVertex, vector<DNode> vertexQue)
 				p.push_back(current);
 			}
 		}
-	} while (current != startVertex); //loop until start Vertex = current
+	} 
 
 
-									  //reverse
+	//reverse
 	reverse(p.begin(), p.end());
 
 	//string converstion and spacing
-	string output = "";
+	output = "";
 	for (string s : p)
 	{
 		output += s;
@@ -193,8 +198,8 @@ string path(string startVertex, string endVertex, vector<DNode> vertexQue)
 
 //Djikstra algorithm used to determine the most efficient path from one node to another,
 //returning the distance between the two vertices or < 0 if none found
-int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, string output) {
-
+int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue) {
+	int cost = 0;
 	//check if at end point
 	if (startVertex == endVertex)
 	{
@@ -205,7 +210,6 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, stri
 
 	//generate DNodes and vertexQue
 	vector<string> adjVertices;
-	bool hasAdj;
 
 	adjVertices = getAdjacent(startVertex);
 	
@@ -279,8 +283,10 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, stri
 		//recursive step
 		vertexQue[next].visited = true;
 
-		return dijkstra(vertexQue[next].name, endVertex, vertexQue, output);
+		cost += dijkstra(vertexQue[next].name, endVertex, vertexQue);
 	}
+
+	return cost;
 
 }
 

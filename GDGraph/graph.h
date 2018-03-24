@@ -7,6 +7,7 @@ using namespace std;
 //vector<string> vertices; 
 //vector<vector<int>> edges; //ADJ MATRIX
 
+
 //void makeEmpty() – Initializes the graph to an empty state.
 void makeEmpty();
 
@@ -29,6 +30,7 @@ vector<string> getAdjacent(string fromVertex);
 //getters
 vector<string> getVertices();
 vector<vector<int>> getEdges();
+string getOutput();
 
 //djikstra algo struct
 //struct definition "dNode" used to store vertex info
@@ -43,5 +45,5 @@ struct DNode {
 
 
 //Djikstra algorithm used to determine the most efficient path from one node to another (-1 if none found)
-int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, string output);
+int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue);
 

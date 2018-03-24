@@ -154,7 +154,6 @@ void QUIT() {
 //PATH - Given two vertices, use Djikstra's algo to generate a path between the two and print the path
 void PATH() {
 	int cost;
-	string output;
 	vector<DNode> dVector;
 	string vS;
 	string vE;
@@ -168,14 +167,14 @@ void PATH() {
 	cin >> vE;
 
 
-	cout << endl << endl << "EXECUTING DJIKSTRA ALGORITHM...";
+	cout << endl << endl << "EXECUTING DJIKSTRA ALGORITHM..." << endl;
 
 	DNode dS;
 	dS.name = vS;
 	dS.visited = true;
 	dVector.push_back(dS);
 
-	cost = dijkstra(vS, vE, dVector, output);
+	cost = dijkstra(vS, vE, dVector);
 
 	if (cost < 0)
 	{
@@ -184,6 +183,6 @@ void PATH() {
 	else
 	{
 		cout << "DISTANCE: " << cost << endl;
-		cout << "PATH TAKEN: " << output << endl << endl;
+		cout << "PATH TAKEN: " << getOutput() << endl << endl;
 	}
 }
