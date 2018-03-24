@@ -123,7 +123,6 @@ vector<string> getAdjacent(string fromVertex) {
 			if (v[i] >= 0)
 			{
 				vAdj.push_back(vertices[i]);
-				cout << "TEST" << endl;
 			}
 		}
 
@@ -162,6 +161,8 @@ string path(string startVertex, string endVertex, vector<DNode> vertexQue)
 
 	do //atleast once
 	{
+
+		cout << "TEST" << endl;
 		//find current in vertexQue
 		for (DNode d : vertexQue)
 		{
@@ -277,6 +278,7 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, stri
 	{
 		//recursive step
 		vertexQue[next].visited = true;
+
 		return dijkstra(vertexQue[next].name, endVertex, vertexQue, output);
 	}
 
