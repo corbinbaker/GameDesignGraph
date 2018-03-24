@@ -1,6 +1,5 @@
 #include "graph.h"
 #include <vector>
-#include <tuple>
 #include <string>
 
 //GRAPH - strings for the vertices and ints for the weights
@@ -143,6 +142,49 @@ vector<vector<int>> getEdges()
 }
 
 
+
+
+
+
+
+
+//traceback for djikstra algorithm
+string path(string startVertex, string endVertex, vector<DNode> vertexQue)
+{
+	string current = endVertex;
+	vector<string> p;
+	p.push_back(endVertex);
+
+	do //atleast once
+	{
+		//find current in vertexQue
+		for (DNode d : vertexQue)
+		{
+			if (d.name == current)
+			{
+				//find its prev
+				current = d.from;
+				p.push_back(current);
+			}
+		}
+	} while (current != startVertex); //loop until start Vertex = current
+
+
+									  //reverse
+	reverse(p.begin(), p.end());
+
+	//string converstion and spacing
+	string output = "";
+	for (string s : p)
+	{
+		output += s;
+		output += " ";
+	}
+
+	return output;
+}
+
+
 //Djikstra algorithm used to determine the most efficient path from one node to another,
 //returning the distance between the two vertices or < 0 if none found
 int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, string output) {
@@ -201,7 +243,7 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, stri
 	int cheapestCost = INT_MAX;
 	int next = -1;
 
-	for (int i = 0; i < vertexQue.size(); i++)
+	for (unsigned int i = 0; i < vertexQue.size(); i++)
 	{
 		if (!vertexQue[i].visited)
 		{
@@ -231,49 +273,6 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, stri
 
 }
 
-//traceback for djikstra algorithm
-string path(string startVertex, string endVertex, vector<DNode> vertexQue)
-{
-	string current = endVertex;
-	vector<string> p;
-	p.push_back(endVertex);
-	
-	do //atleast once
-	{
-		//find current in vertexQue
-		for (DNode d : vertexQue)
-		{
-			if (d.name == current)
-			{
-				//find its prev
-				current = d.from;
-				p.push_back(current);
-			}
-		}
-	} while (current != startVertex); //loop until start Vertex = current
-
-	
-	//reverse
-	reverse(p.begin(), p.end());
-
-	//string converstion and spacing
-	string output = "";
-	for (string s : p)
-	{
-		output += s;
-		output += " ";
-	}
-
-	return output;
-}
 
 
-//struct definition "dNode" used to store vertex info
-struct DNode {
 
-	string name;
-	int cost;
-	string from;
-	bool visited;
-
-};

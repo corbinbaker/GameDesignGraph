@@ -24,12 +24,24 @@ int getWeight(string fromVertex, string toVertex);
 
 
 //bool getAdjacent( string fromVertex, queue vertexQue) – given the vertex fromVertex, return a queue containing the adjacent vertices.  Returns false if vertex not found.
-bool getAdjacent(string fromVertex, queue<string> vertexQue);
+bool getAdjacent(string fromVertex, vector<string> vertexQue);
 
 //getters
 vector<string> getVertices();
 vector<vector<int>> getEdges();
 
+//djikstra algo struct
+//struct definition "dNode" used to store vertex info
+struct DNode {
+
+	string name;
+	int cost;
+	string from;
+	bool visited;
+
+};
+
 
 //Djikstra algorithm used to determine the most efficient path from one node to another (-1 if none found)
-int dijkstra(string startVertex, string endVertex, queue<string> vertexQue);
+int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, string output);
+

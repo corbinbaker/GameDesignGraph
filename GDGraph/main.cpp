@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 	while (true)
 	{
 		cout << "PLEASE ENTER ONE OF THE FOLLOWING COMMANDS :: " << endl;
-		cout << "INIT / ADDV / ADDE / PRINT / TEST1 / TEST2 / PATH/ QUIT" << endl << endl;
+		cout << "INIT / ADDV / ADDE / PRINT / TEST1 / TEST2 / PATH / QUIT" << endl << endl;
 		cin >> input;
 
 		if (input == "INIT")
