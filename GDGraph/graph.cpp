@@ -204,7 +204,6 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, stri
 		return 0;
 	}
 
-
 	//generate DNodes and vertexQue
 	vector<string> adjVertices;
 	bool hasAdj;
@@ -214,10 +213,12 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, stri
 	{
 		for (string s : adjVertices)
 		{
+			
 			//check for duplicates
 			bool pres = false;
 			for (DNode d : vertexQue)
 			{
+				
 				if (d.name == s)
 				{
 					pres = true; //duplicate found
@@ -237,7 +238,7 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, stri
 
 			//new node found
 			if (!pres)
-			{
+			{	
 				DNode d;
 				d.name = s;
 				d.from = startVertex;
@@ -245,7 +246,6 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, stri
 				d.cost = getWeight(startVertex, d.name);
 				vertexQue.push_back(d);
 			}
-
 		}
 	}
 
