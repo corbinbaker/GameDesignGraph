@@ -123,7 +123,7 @@ bool getAdjacent(string fromVertex, vector<string> vertexQue) {
 
 		for (int i : v)
 		{
-			vertexQue.emplace(vertices[i]);
+			vertexQue.push_back(vertices[i]);
 		}
 
 		return true;
@@ -144,29 +144,60 @@ vector<vector<int>> getEdges()
 
 
 //Djikstra algorithm used to determine the most efficient path from one node to another,
-//returning the distance between the two vertices or -1 if none found, vertexQue is the path taken
-bool found = false;
-int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue) {
+//returning the distance between the two vertices or < 0 if none found
+int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, string output) {
 
+	//check if at end point
 	if (startVertex == endVertex)
 	{
+		//print path and return cost
+		output = path(startVertex, endVertex, vertexQue);
 		return 0;
 	}
 
+
+	//generate DNodes and vertexQue
 	vector<string> adjVertices;
 	getAdjacent(startVertex, adjVertices);
-
 	for (string s : adjVertices)
 	{
+		//check for duplicates
+		bool pres = false;
 		for (DNode d : vertexQue)
 		{
-		
+			if (d.name == s)
+			{
+				pres = true; //duplicate found
+				if (!d.visited)
+				{
+					//if more efficient path found, use this path
+					int cTemp = getWeight(startVertex, d.name);
+					if (d.cost > cTemp)
+					{
+						d.cost = cTemp;
+						d.from = startVertex;
+					}
+				}
+			}
 		}
+
+
+		//new node found
+		if (!pres)
+		{
+			DNode d;
+			d.name = s;
+			d.from = startVertex;
+			d.visited = false;
+			d.cost = getWeight(startVertex, d.name);
+			vertexQue.push_back(d);
+		}
+		
 	}
 
 
 
-	
+	//find cheapest element in queue and send that for the next djikstra iteration
 	int cheapestCost = INT_MAX;
 	int next = -1;
 
@@ -181,17 +212,59 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue) {
 			}
 		}
 	}
+	
+	
+	//check if endpoint is reachable
 
-	if (next == -1)
+	if (next == -1) //can't reach endpoint
 	{
+		//this number should be large enough to overpower any positive values from previous instances in the recursion
 		return -1000;
 	}
+
 	else
 	{
-		vertexQue[next].visited;
-		return dijkstra(vertexQue[next].name, endVertex, vertexQue);
+		//recursive step
+		vertexQue[next].visited = true;
+		return dijkstra(vertexQue[next].name, endVertex, vertexQue, output);
 	}
 
+}
+
+//traceback for djikstra algorithm
+string path(string startVertex, string endVertex, vector<DNode> vertexQue)
+{
+	string current = endVertex;
+	vector<string> p;
+	p.push_back(endVertex);
+	
+	do //atleast once
+	{
+		//find current in vertexQue
+		for (DNode d : vertexQue)
+		{
+			if (d.name == current)
+			{
+				//find its prev
+				current = d.from;
+				p.push_back(current);
+			}
+		}
+	} while (current != startVertex); //loop until start Vertex = current
+
+	
+	//reverse
+	reverse(p.begin(), p.end());
+
+	//string converstion and spacing
+	string output = "";
+	for (string s : p)
+	{
+		output += s;
+		output += " ";
+	}
+
+	return output;
 }
 
 
