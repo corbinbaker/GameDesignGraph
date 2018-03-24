@@ -6,7 +6,6 @@
 //GRAPH - strings for the vertices and ints for the weights
 vector<string> vertices = vector<string>();
 vector<vector<int>> edges = vector<vector<int>>();
-string output = "";
 
 //initializes the graph to an empty state.
 void makeEmpty() {
@@ -146,10 +145,6 @@ vector<vector<int>> getEdges()
 	return edges;
 }
 
-string getOutput()
-{
-	return output;
-}
 
 
 
@@ -159,8 +154,9 @@ string getOutput()
 
 
 //traceback for djikstra algorithm
-string path(string startVertex, string endVertex, vector<DNode> vertexQue)
+void path(string startVertex, string endVertex, vector<DNode> vertexQue, string* o)
 {
+	string output;
 	string current = endVertex;
 	vector<string> p;
 	p.push_back(endVertex);
@@ -185,27 +181,26 @@ string path(string startVertex, string endVertex, vector<DNode> vertexQue)
 	reverse(p.begin(), p.end());
 
 	//string converstion and spacing
-	output = "";
 	for (string s : p)
 	{
 		output += s;
 		output += " ";
 	}
 
-	return output;
+	*o = output;
 }
 
 
 //Djikstra algorithm used to determine the most efficient path from one node to another,
 //returning the distance between the two vertices or < 0 if none found
-int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue) {
+int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue, string* o) {
 	int cost = 0;
 	//check if at end point
 	if (startVertex == endVertex)
 	{
 		//print path and return cost
-		output = path(startVertex, endVertex, vertexQue);
-		return 0;
+		path(startVertex, endVertex, vertexQue, o);
+		return cost;
 	}
 
 	//generate DNodes and vertexQue
@@ -283,7 +278,7 @@ int dijkstra(string startVertex, string endVertex, vector<DNode> vertexQue) {
 		//recursive step
 		vertexQue[next].visited = true;
 		cost += cheapestCost;
-		cost += dijkstra(vertexQue[next].name, endVertex, vertexQue);
+		cost += dijkstra(vertexQue[next].name, endVertex, vertexQue, o);
 	}
 
 	cout << cost << endl;
